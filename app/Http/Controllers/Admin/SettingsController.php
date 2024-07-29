@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class SettingsController extends Controller
 {
     public function show(Request $request) {
-        return 'admin/settings';
+        return view('admin.settings');
     }
 }

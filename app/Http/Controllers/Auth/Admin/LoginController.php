@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     public function show(Request $request) {
-        return 'admin.login_token='.csrf_token();
+        return view('auth.admin.login');
     }
 
     public function store(LoginRequest $request): RedirectResponse {

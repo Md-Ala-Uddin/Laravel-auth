@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function show(Request $request) {
-        return 'admin/users';
+        return view('admin.users');
     }
 }
