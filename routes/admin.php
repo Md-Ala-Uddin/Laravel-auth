@@ -12,7 +12,9 @@ Route::prefix('admin')
         Route::get('/login', [LoginController::class, 'show'])->name('login');
         Route::post('/login', [LoginController::class, 'store']);
 
-        Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
-        Route::get('/settings', [SettingsController::class, 'show'])->name('settings');
-        Route::get('/users', [UserController::class, 'show'])->name('users');
+        Route::middleware('admin')->group(function() {
+            Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
+            Route::get('/settings', [SettingsController::class, 'show'])->name('settings');
+            Route::get('/users', [UserController::class, 'show'])->name('users');
+        });
     });
