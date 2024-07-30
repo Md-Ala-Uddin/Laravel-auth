@@ -17,6 +17,9 @@ Route::prefix('admin')
         Route::middleware('admin')->group(function() {
             Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
             Route::get('/settings', [SettingsController::class, 'show'])->name('settings');
-            Route::get('/users', [UserController::class, 'show'])->name('users');
+
+            Route::get('/users', [UserController::class, 'show'])->name('users.index');
+            Route::put('/users/{user}/update', [UserController::class, 'update'])->name('users.update');
+            Route::delete('/users/{user}/delete', [UserController::class, 'delete'])->name('users.destroy');
         });
     });
