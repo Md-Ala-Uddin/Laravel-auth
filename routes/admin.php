@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\Admin\LoginController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\UserController;
+use App\http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')
@@ -14,7 +15,11 @@ Route::prefix('admin')
             Route::post('/login', [LoginController::class, 'store']);
         });
 
-        Route::middleware('admin')->group(function() {
+        Route::middleware('admin')->group(function () {
+            Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+            Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+            Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
             Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
             Route::get('/settings', [SettingsController::class, 'show'])->name('settings');
 
